@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang = "en">
+	<head>
+		<meta charset  = "UTF-8"  name = "viewport" content = "width=device-width, initial-scale=1"/>
+		<title>Simple CRUD Operation</title>
+		<link rel = "stylesheet" type = "text/css" href = "styles/bootstrap.css" />
+		<link rel = "stylesheet" type = "text/css" href = "styles/style.css" />
+		<script src = "scripts/angular.js"></script>
+		<script src = "scripts/app.js"></script>
+	</head>
+<body ng-app = "myModule" ng-controller = "myController">
+	
+	<div class = "row">
+		<div class = "col-md-2"></div>
+		<div class = "col-md-8 well">
+			<h3 class = "text-primary">List of products with ADD and DELETE operations</h3>
+			<hr style = "border-top:1px dotted #000;"/>
+			<div class = "alert alert-info">Product Information <button class = "btn btn-sm btn-primary pull-right" data-toggle="modal" data-target="#add_product">ADD</button></div>
+			<div class = "container-fluid">
+				<br />
+				<br />
+				<table class = "table table-bordered alert-warning">
+					<thead>
+						<tr>
+							<th>Product ID</th>
+							<th>Product Name</th>
+							<th>Product Rate</th>
+							<th>Product Quality</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat = "product in products">
+							<td>{{$index+1}}</td>
+							<td>{{product.name}}</td>
+							<td>{{product.rate}}</td>
+							<td>{{product.quality}}</td>
+							<td>
+								<a><span ng-click="deleteProduct($index)">Delete</span></a> </td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>	
+	<div class="modal fade" id="add_product" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<form>
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title text-info" id="myModalLabel">Product Details</h4>
+			</div>
+			<div class="modal-body">	
+					<div class = "form-group">
+						<label>Product Name</label>
+						<input type  = "text" class = "form-control" ng-model = "newProdcut.name" required=""/>
+					</div>
+					<div class = "form-group">
+						<label>Product Rate</label>
+						<input type  = "text" class = "form-control" ng-model = "newProdcut.rate" required=""/>
+					</div>
+					<div class = "form-group">
+						<label>Product Quality</label>
+						<select class = "form-control" ng-model = "newProdcut.quality" >
+							<option value = "">Choose an option</option>
+							<option value = "1">1</option>
+							<option value = "2">2</option>
+							<option value = "3">3</option>
+							<option value = "4">4</option>
+							<option value = "5">5</option>
+						</select>
+					</div>
+			</div>
+			<div class="modal-footer">
+				<button  class="btn btn-primary" ng-click = "saveProduct()" data-dismiss = "modal">Save</button>
+			</div>
+			</form>
+		</div>
+	</div>
+	</div>
+</body>
+<script src  = "scripts/jquery-3.1.1.js"></script>	
+<script src  = "scripts/bootstrap.js"></script>	
+</html>

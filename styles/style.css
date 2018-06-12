@@ -1,0 +1,9 @@
+table tr td span {
+	color: blue;
+    cursor: pointer;
+    border-bottom: 1px solid blue;
+}
+
+table tr td a:hover {
+	text-decoration: none;
+}
